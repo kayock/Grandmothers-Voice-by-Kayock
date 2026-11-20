@@ -1,0 +1,139 @@
+0 HEAD
+1 SOUR KAYOCK-TEST
+2 NAME Kayock Synthetic Fixture
+2 VERS 1.0
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+1 SUBM @SUB1@
+0 @SUB1@ SUBM
+1 NAME Kayock Test Submitter
+0 @I1@ INDI
+1 NAME John/Doel/
+2 GIVN John
+2 SURN Doel
+1 SEX M
+1 BIRT
+2 DATE 12 JUN 1893
+2 PLAC Riverton, Franklin County, Idaho, United States
+2 SOUR @S1@
+3 PAGE 1893 birth register, entry 214
+3 QUAY 3
+2 NOTE Written in the family bible.
+1 DEAT
+2 DATE ABT 1971
+2 PLAC Pocatello, Bannock County, Idaho, United States
+1 CHR
+2 DATE JUL 1893
+2 PLAC Riverton ward chapel
+1 OCCU railroad brakeman
+1 RESI
+2 DATE 1920
+2 PLAC 41 Elm Street, Riverton, Idaho
+2 SOUR @S2@
+1 FAMS @F1@
+1 FAMS @F2@
+1 FAMC @F3@
+1 NOTE @N1@
+1 NOTE Inline note recorded by great-aunt June in 1994.
+1 OBJE @M1@
+1 OBJE @M2@
+0 @I2@ INDI
+1 NAME Mary Agnes/Whitlock/
+1 SEX F
+1 BIRT
+2 DATE 3 MAR 1896
+2 PLAC Logan, Cache County, Utah, United States
+1 DEAT
+2 DATE 14 NOV 1981
+1 FAMS @F1@
+1 FAMS @F2@
+1 FAMC @F4@
+0 @I3@ INDI
+1 NAME Robert John/Doel/
+1 SEX M
+1 BIRT
+2 DATE BET 1919 AND 1920
+2 PLAC Riverton, Idaho, United States
+2 SOUR @S2@
+3 PAGE 1920 census household 44
+1 FAMS @F5@
+1 FAMC @F1@
+0 @I4@ INDI
+1 NAME Living/Doel/
+1 SEX F
+1 BIRT
+2 DATE 4 JUL 1952
+1 FAMC @F5@
+0 @I5@ INDI
+1 NAME Elsie/May/Whitlock
+1 SEX F
+1 BIRT
+2 DATE 1896
+2 PLAC Logan, Utah
+1 FAMC @F4@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 MARR
+2 DATE 8 SEP 1918
+2 PLAC Riverton, Idaho, United States
+2 SOUR @S1@
+1 NOTE Married at the county courthouse; witnesses were the Whitlock cousins.
+0 @F2@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 DIV Y
+1 DIV
+2 DATE 1931
+0 @F3@ FAM
+1 HUSB @I6@
+1 WIFE @I7@
+1 CHIL @I1@
+0 @F4@ FAM
+1 HUSB @I8@
+1 WIFE @I9@
+1 CHIL @I2@
+1 CHIL @I5@
+0 @F5@ FAM
+1 HUSB @I3@
+1 CHIL @I4@
+1 MARR
+2 DATE 1950
+0 @I6@ INDI
+1 NAME Abraham/Doel/
+1 SEX M
+0 @I7@ INDI
+1 NAME Constance/Hale/
+1 SEX F
+0 @I8@ INDI
+1 NAME Elias/Whitlock/
+1 SEX M
+0 @I9@ INDI
+1 NAME Ruth/Vance/
+1 SEX F
+0 @N1@ NOTE
+1 CONT John Doel was born at the family ranch outside Riverton.
+1 CONT His middle name is not recorded in any known document.
+0 @S1@ SOUR
+1 TITL Franklin County birth register 1893
+1 ABBR FC Births 1893
+1 AUTH Franklin County Clerk
+1 PUBL County courthouse, Preston, Idaho
+1 TEXT transcribed from register volume 4, page 91
+1 NOTE Preserved on microfilm roll 22.
+0 @S2@ SOUR
+1 TITL United States census 1920
+1 ABBR 1920 US Census
+0 @M1@ OBJE
+1 FILE Photos/john_doel_1917.jpg
+2 FORM jpg
+3 TITL John Doel in his railroad uniform, 1917
+1 TITL John Doel portrait 1917
+0 @M2@ OBJE
+1 FILE Documents/whitlock_dairy_ledger.pdf
+2 FORM pdf
+1 TITL Whitlock dairy ledger, 1902
+0 TRLR

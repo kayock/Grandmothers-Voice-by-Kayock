@@ -1,0 +1,59 @@
+0 HEAD
+1 SOUR TEST
+1 GEDC
+2 VERS 5.5.1
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Dup/Person/
+1 BIRT
+2 DATE 1 JAN 1900
+1 FAMC @F999@
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Dup/Person/
+1 BIRT
+2 DATE 1 JAN 1900
+2 PLAC Same Town, Somewhere
+1 FAMC @F1@
+0 @I5@ INDI
+1 NAME Duplicate Xref/Record/
+0 @I3@ INDI
+1 NAME Orphan/Spouse/
+1 FAMS @F888@
+1 FAMC @F1@
+0 @I4@ INDI
+1 NAME Broken/Birth/
+1 BIRT
+2 DATE 5 FEB 2001
+1 DEAT
+2 DATE 3 FEB 1999
+1 FAMC @F999@
+1 NOTE @N7@
+0 @I5@ INDI
+1 NAME Cont conc/Tester/
+1 NOTE First line of the note
+2 CONT second line after CONT
+2 CONC appended without newline
+1 BIRT
+2 DATE 10 OCT 1935
+2 NOTE Event-level note should be kept
+2 SOUR @S1@
+3 PAGE citation page
+0 @F1@ FAM
+1 HUSB @I2@
+1 WIFE @I2@
+1 CHIL @I2@
+1 CHIL @I3@
+1 CHIL @I999@
+1 NOTE Family note text
+0 @S1@ SOUR
+1 TITL Test source with page citations
+0 @I6@ INDI
+1 NAME Weird Level/Jump/
+1 BIRT
+2 DATE 1900
+3   UNEXPECTED DEEP LINE
+0 @M1@ OBJE
+1 BLOB
+2 CONT fake-blob-content-not-a-real-file
+0 TRLR

@@ -1,0 +1,81 @@
+0 HEAD
+1 SOUR TEST
+1 GEDC
+2 VERS 5.5.1
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Grandpa/Eventide/
+1 SEX M
+1 BIRT
+2 DATE 12 JUN 1920
+2 PLAC Riverside
+2 OBJE @M2@
+1 DEAT
+2 DATE 3 MAR 2001
+2 OBJE @M5@
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Grandma/Eventide/
+1 SEX F
+1 BIRT
+2 DATE 2 FEB 1923
+1 DEAT
+2 DATE 2005
+1 FAMS @F1@
+0 @I3@ INDI
+1 NAME Son/Eventide/
+1 SEX M
+1 BIRT
+2 DATE 1950
+1 FAMS @F2@
+0 @I4@ INDI
+1 NAME Daughter-in-law/Everliving/
+1 SEX F
+1 BIRT
+2 DATE 1955
+1 FAMS @F2@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 MARR
+2 DATE 1950
+2 PLAC Riverside Chapel
+2 OBJE @M1@
+2 OBJE @M2@
+1 CENS
+2 DATE 1955
+2 OBJE @M3@
+2 OBJE @M4@
+0 @F2@ FAM
+1 HUSB @I3@
+1 WIFE @I4@
+1 MARR
+2 DATE 1980
+2 PLAC Private Garden
+2 OBJE @M6@
+0 @M1@ OBJE
+1 FILE Photos/marriage-photo-1950-MARKER.svg
+2 FORM svg
+1 TITL Marriage photograph marker
+0 @M2@ OBJE
+1 FILE Docs/shared-family-register-MARKER.svg
+2 FORM svg
+1 TITL Shared family register marker
+0 @M3@ OBJE
+1 FILE Docs/census-1955-page.svg
+2 FORM svg
+1 TITL Census page 1955
+0 @M4@ OBJE
+1 FILE Photos/census-household.svg
+2 FORM svg
+1 TITL Census household photo
+0 @M5@ OBJE
+1 FILE Photos/never-provided-MISSING-MARKER.jpg
+2 FORM jpg
+1 TITL Missing file marker
+0 @M6@ OBJE
+1 FILE Photos/private-wedding-1980-PRIVATE-MARKER.svg
+2 FORM svg
+1 TITL PRIVATE-FAMILY-EVENT-TITLE-MARKER
+0 TRLR
