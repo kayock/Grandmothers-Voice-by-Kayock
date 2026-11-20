@@ -66,6 +66,13 @@ Read `PRIVACY.md` in the distribution for details.
 - The migration view lists historical place names but does not invent map coordinates.
 - Browser folder selection, printing and layout may vary across systems.
 
+
+## Optional example GEDCOM collection
+
+The [Famous Family Trees reference collection](examples/famous-family-trees/Famous_Family_Trees_GEDCOM_Collection.zip) contains **87 sample GEDCOMs** from historical, royal, fictional, organizational and other relationship structures. These trees were used during development of the importer. Download and extract the archive, then select a `.ged` file in the offline app.
+
+These are **third-party reference files, not MIT-licensed project code**. Submitter contact details have been removed from this repository copy. See [the collection's README](examples/famous-family-trees/README.md) for changes, provenance and copyright caveats.
+
 ## Contributing and license
 
 Contributions and reproducible bug reports are welcome. Please use synthetic or anonymized GEDCOM fixtures—never post real private family records or photos in public issues.
