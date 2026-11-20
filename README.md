@@ -5,6 +5,8 @@
 
 Grandmothers voice by Kayock transforms GEDCOM family history files into self-contained, interactive HTML family explorers, printable family story booklets, and Obsidian/Logseq research vaults. It runs **fully offline** in a browser, without accounts, subscriptions, advertisements, telemetry, or a development server. Your original GEDCOM file is never modified.
 
+**[Download v2.1.1](Grandmothers_Voice_by_Kayock_v2.1.1.zip)** · [View standalone app source](Grandmothers_Voice_by_Kayock.html) · [Browse screenshots](screenshots/)
+
 ## Features
 
 - **GEDCOM importer:** Detects GEDCOM 5.5.1/7.0 and common encodings, with diagnostic and source-quality reports.
@@ -33,7 +35,7 @@ Grandmothers voice by Kayock transforms GEDCOM family history files into self-co
 
 ## Quick start
 
-1. Download and extract the release ZIP.
+1. [Download the complete v2.1.1 ZIP](Grandmothers_Voice_by_Kayock_v2.1.1.zip) and extract it.
 2. Double-click `Grandmothers_Voice_by_Kayock.html` or use the included Windows, Linux or macOS launcher.
 3. Click **Load Sample Family** to explore the program, or select your own `.ged` file.
 4. Add photos and documents, then generate your interactive explorer, Markdown vault or story booklet.
