@@ -1,0 +1,357 @@
+<body>
+<a class="skipLink" href="#mainContent">Skip to main content</a>
+<header class="app">
+  <div class="wrap">
+    <div class="titleRow">
+      <h1>Grandmothers voice by Kayock</h1>
+      <span class="versionPill" id="versionPill">v2.1.1 · MIT</span>
+      <span class="spacer"></span>
+      <div class="headerBtns">
+        <button class="secondary" id="themeBtn" aria-label="Switch color theme">Theme: Dark · Kayock Purple</button>
+        <button class="secondary" id="sampleBtn" aria-label="Load the synthetic sample family">Load Sample Family</button>
+        <button class="secondary" id="helpBtn" aria-label="Open help and tour">Help</button>
+      </div>
+    </div>
+    <div class="tag">Drop in a GEDCOM <code>.ged</code> file, add your photo and document folders, and build a standalone interactive Family Story Explorer, media galleries, keepsake booklets, and Markdown research vaults — all offline, with your original GED file never modified.</div>
+    <nav class="tabs" role="tablist" aria-label="Main sections">
+      <button role="tab" id="tab-build" aria-controls="panel-build" aria-selected="true">1 · Build</button>
+      <button role="tab" id="tab-diagnostics" aria-controls="panel-diagnostics" aria-selected="false">2 · Diagnostics</button>
+      <button role="tab" id="tab-media" aria-controls="panel-media" aria-selected="false">3 · Media Library</button>
+      <button role="tab" id="tab-refine" aria-controls="panel-refine" aria-selected="false">4 · Refine</button>
+      <button role="tab" id="tab-booklet" aria-controls="panel-booklet" aria-selected="false">5 · Booklet</button>
+      <button role="tab" id="tab-about" aria-controls="panel-about" aria-selected="false">Help &amp; Privacy</button>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap" id="mainContent">
+
+<!-- ============================================================ BUILD TAB -->
+<section id="panel-build" class="tabPanel active" role="tabpanel" aria-labelledby="tab-build">
+  <div class="grid">
+    <div>
+      <div class="card">
+        <h2>1. Choose a GED file</h2>
+        <div id="drop" class="drop" role="button" tabindex="0" aria-label="Drop or choose a GEDCOM file">
+          <strong>Drop your .ged file here</strong>
+          <span>or click to choose a GEDCOM file exported from Ancestry, FamilySearch, RootsMagic, Gramps, MyHeritage, etc.<br>Tip: the sample family in the header lets you try everything without your own file.</span>
+        </div>
+        <input id="file" type="file" accept=".ged,.GED,.txt,text/plain">
+        <div id="fileInfo" class="footer"></div>
+        <div id="encodingNote" class="note" style="display:none"></div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h2>2. Configure output</h2>
+        <label class="small" for="treeTitle">Explorer title</label>
+        <input id="treeTitle" type="text" value="Family Story Explorer">
+        <label class="small" for="spotlightName">Optional start person / spotlight name</label>
+        <input id="spotlightName" type="text" placeholder="Example: Rebecca Vigil">
+        <label class="small" for="authorName">Your name (saved with refinement notes, shared only inside your exports)</label>
+        <input id="authorName" type="text" placeholder="Example: June Martinez">
+
+        <h3>Export profile</h3>
+        <div class="row">
+          <label class="check" style="margin:0"><input type="radio" name="profile" id="profileFull" value="full" checked> <span><b>Full archive</b> — everything, largest files</span></label>
+          <label class="check" style="margin:0"><input type="radio" name="profile" id="profileFamily" value="family"> <span><b>Family sharing edition</b> — smaller: source transcripts trimmed, photos downscaled, audio/video not embedded</span></label>
+        </div>
+
+        <h3>Privacy before sharing</h3>
+        <label class="small" for="privacyMode">Living people handling (applies to every generated file)</label>
+        <select id="privacyMode">
+          <option value="full">Keep everyone (private local use)</option>
+          <option value="redact">Redact living people — keep name, hide dates, places, notes, sources, media</option>
+          <option value="redact-names">Redact living people and replace names with initials</option>
+          <option value="exclude">Exclude living people (structure kept, person marked private)</option>
+        </select>
+        <div class="row">
+          <label class="check" style="margin:4px 0"><input id="privacyLivingAge" type="number" min="50" max="120" value="100" style="width:80px"> <span>year threshold for “possibly living”</span></label>
+          <label class="check" style="margin:4px 0"><input id="privacyStrictNoDates" type="checkbox"> <span>treat people with no dates as living</span></label>
+        </div>
+        <div class="note" id="privacyNote" style="display:none"></div>
+
+        <h3>Include in generated explorer</h3>
+        <label class="check"><input id="includePersonNotes" type="checkbox" checked> <span>Person notes</span></label>
+        <label class="check"><input id="includeFamilyNotes" type="checkbox" checked> <span>Family and marriage notes</span></label>
+        <label class="check"><input id="includeSourceNotes" type="checkbox" checked> <span>Source notes, source titles, and citation text</span></label>
+        <label class="check"><input id="includeMedia" type="checkbox" checked> <span>Media/object references and imported photos &amp; documents</span></label>
+        <label class="check"><input id="includeDiagnostics" type="checkbox"> <span>Include data diagnostics report in the explorer (small trees only)</span></label>
+        <label class="check"><input id="includeNotebook" type="checkbox" checked> <span>Tree Refinement Mode: add editable notes, corrections, duplicate flags, and export a report</span></label>
+        <label class="check"><input id="includeSampleTour" type="checkbox" checked> <span>First-visit guided introduction inside the explorer</span></label>
+
+        <h3>Media embedding (interactive HTML)</h3>
+        <label class="check"><input id="embedMedia" type="checkbox" checked> <span>Embed imported media in the single-file explorer (self-contained; use the HTML+media ZIP export for large collections)</span></label>
+        <div id="mediaSizeNote" class="note" style="display:none"></div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h2>3. Parse &amp; build</h2>
+        <div class="row">
+          <button id="parseBtn" disabled>Parse GED</button>
+          <button id="cancelParseBtn" class="ghost" disabled>Cancel parse</button>
+        </div>
+        <div class="progressWrap" id="parseProgress">
+          <div class="progressOuter"><div class="progressInner" id="parseProgressBar"></div></div>
+          <div class="progressLabel"><span id="parseProgressLabel">Preparing…</span><span id="parseProgressPct"></span></div>
+        </div>
+        <h3>Generate &amp; export</h3>
+        <div class="row">
+          <button id="generateBtn" disabled>Generate Interactive HTML</button>
+          <button id="generateZipBtn" class="secondary" disabled>HTML + Media ZIP</button>
+          <button id="downloadJsonBtn" class="secondary" disabled>Download Parsed JSON</button>
+          <button id="exportObsidianBtn" class="secondary" disabled>Export Obsidian Vault ZIP</button>
+          <button id="exportLogseqBtn" class="secondary" disabled>Export Logseq Vault ZIP</button>
+          <button id="exportMarkdownSingleBtn" class="secondary" disabled>Download One Markdown File</button>
+        </div>
+        <div class="progressWrap" id="exportProgress">
+          <div class="progressOuter"><div class="progressInner" id="exportProgressBar"></div></div>
+          <div class="progressLabel"><span id="exportProgressLabel">Preparing…</span><span id="exportProgressPct"></span></div>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <button id="diagReportBtn" class="ghost" disabled>Download Diagnostics Report</button>
+          <button id="qualityReportBtn" class="ghost" disabled>Download Source Quality Report</button>
+        </div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card">
+        <h2>4. Status</h2>
+        <div class="stats">
+          <div class="stat"><b id="peopleCount">—</b><span>People</span></div>
+          <div class="stat"><b id="familyCount">—</b><span>Families</span></div>
+          <div class="stat"><b id="noteCount">—</b><span>Notes</span></div>
+          <div class="stat"><b id="sourceCount">—</b><span>Sources</span></div>
+          <div class="stat"><b id="mediaCount">—</b><span>Media refs</span></div>
+          <div class="stat"><b id="eventCount">—</b><span>Life events</span></div>
+        </div>
+        <div id="parseMeta" class="footer" style="display:none"></div>
+        <div id="readyNote" class="note warn">Choose a <code>.ged</code> file first. If Ancestry gave you a <code>.zip</code>, unzip it and select the <code>.ged</code> inside.</div>
+        <h3>Log</h3>
+        <div id="log" class="log" role="log" aria-live="polite">Waiting for GED file…</div>
+        <div class="footer">
+          <span class="pill">Offline</span><span class="pill">Read-only import</span><span class="pill">No server</span><span class="pill">No telemetry</span><span class="pill">MIT licensed</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ====================================================== DIAGNOSTICS TAB -->
+<section id="panel-diagnostics" class="tabPanel" role="tabpanel" aria-labelledby="tab-diagnostics">
+  <div class="card">
+    <h2>Data diagnostics</h2>
+    <div id="diagSummary" class="note warn">Parse a GED file to see the diagnostics report.</div>
+    <div class="row" style="margin:10px 0" id="diagFilters">
+      <button class="ghost" data-sev="all">All</button>
+      <button class="ghost" data-sev="error">Errors</button>
+      <button class="ghost" data-sev="warning">Warnings</button>
+      <button class="ghost" data-sev="info">Info</button>
+    </div>
+    <div class="scrollX" style="max-height:340px;overflow:auto">
+      <table class="data wrapTable" id="diagTable">
+        <thead><tr><th style="width:90px">Severity</th><th style="width:190px">Code</th><th>Detail</th><th style="width:110px">Record</th></tr></thead>
+        <tbody id="diagTableBody"><tr><td colspan="4">No diagnostics yet.</td></tr></tbody>
+      </table>
+    </div>
+    <p class="footer">Missing references, malformed lines, duplicate IDs, date conflicts, and unsupported structures are listed here. Nothing is ever removed from your data automatically — the report helps you fix records in your genealogy software.</p>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h2>Source quality &amp; missing evidence</h2>
+    <div id="qualitySummary" class="note warn">Parse a GED file to see source coverage.</div>
+    <div id="qualityBars"></div>
+    <div class="scrollX" style="max-height:260px;overflow:auto;margin-top:10px">
+      <table class="data wrapTable" id="qualityTable">
+        <thead><tr><th>Person</th><th style="width:110px">GED ID</th><th style="width:90px">Events</th><th style="width:90px">Cited</th><th>Suggestion</th></tr></thead>
+        <tbody id="qualityTableBody"><tr><td colspan="5">No report yet.</td></tr></tbody>
+      </table>
+    </div>
+    <p class="footer">This report lists people whose events have no citations. It never invents facts — it only shows where evidence is missing.</p>
+  </div>
+</section>
+
+<!-- ========================================================== MEDIA TAB -->
+<section id="panel-media" class="tabPanel" role="tabpanel" aria-labelledby="tab-media">
+  <div class="card">
+    <h2>Media library</h2>
+    <p class="note">Import the photo and document folders that belong to your GED. Files are matched to the media references (<code>OBJE</code>) in the GED by filename — exact first, then without extension. Everything stays on your computer.</p>
+    <div class="row">
+      <button id="mediaFolderBtn" class="secondary">Import media folder…</button>
+      <button id="mediaFilesBtn" class="secondary">Add files…</button>
+      <button id="mediaLinkBtn" class="ghost">Link file to a media reference…</button>
+      <button id="mediaClearBtn" class="ghost">Clear imported media</button>
+    </div>
+    <input id="mediaFolderInput" type="file" webkitdirectory multiple>
+    <input id="mediaFilesInput" type="file" multiple>
+    <div id="mediaStats" class="footer" style="margin-top:10px">No media imported yet.</div>
+    <div id="mediaMissing" class="note warn" style="display:none"></div>
+    <h3>Matched &amp; unmatched references</h3>
+    <div class="scrollX" style="max-height:260px;overflow:auto">
+      <table class="data wrapTable" id="mediaTable">
+        <thead><tr><th style="width:110px">Status</th><th style="width:120px">GED ref</th><th>GED file reference</th><th style="width:150px">Title</th><th>Matched to</th><th style="width:80px">Used by</th></tr></thead>
+        <tbody id="mediaTableBody"><tr><td colspan="6">Parse a GED file first.</td></tr></tbody>
+      </table>
+    </div>
+    <h3>Gallery preview</h3>
+    <div id="galleryPreview" class="mediaGrid"></div>
+  </div>
+</section>
+
+<!-- ========================================================= REFINE TAB -->
+<section id="panel-refine" class="tabPanel" role="tabpanel" aria-labelledby="tab-refine">
+  <div class="card">
+    <h2>Tree identity</h2>
+    <div id="treeIdentity" class="note warn">Parse a GED file to compute its stable identity. Refinement backups remember this identity so notes are never silently attached to an unrelated family.</div>
+    <div class="row" style="margin-top:8px">
+      <button id="refineExportBtn" class="secondary" disabled>Export merged refinement backup (JSON)</button>
+      <button id="refineImportBtn" class="secondary">Import refinement backup(s)…</button>
+      <button id="refineClearBtn" class="ghost">Clear this device’s notes</button>
+    </div>
+    <input id="refineImportInput" type="file" accept=".json,application/json" multiple>
+    <p class="footer">Family members each add notes in their own copy of the explorer, export a JSON backup, and send it to you. Import several backups here, review conflicts, and export one merged backup to load back into the explorer. Notes are never auto-merged over other notes without review.</p>
+  </div>
+  <div class="card" style="margin-top:14px" id="mergeReviewCard" style="display:none">
+    <h2>Merge review</h2>
+    <div id="mergeReview" class="note">Import a refinement backup to review merges.</div>
+    <div class="row" style="margin-top:8px"><button id="mergeApplyBtn" class="primary" disabled>Apply reviewed merges</button></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h2>Duplicate person suggestions</h2>
+    <div id="dupSuggestions" class="note warn">Parse a GED file to scan for possible duplicates. Suggestions come with evidence and a confidence level; nothing is merged automatically.</div>
+    <div id="dupList" class="scrollX" style="max-height:300px;overflow:auto"></div>
+    <div class="row" style="margin-top:8px"><button id="dupFlagAllBtn" class="ghost" disabled>Flag all suggestions into refinement notes</button></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h2>Photo / document request checklist</h2>
+    <div id="photoChecklist" class="note warn">Parse a GED file to build the checklist. People flagged “photo/document to find” in Tree Refinement Mode appear here.</div>
+    <div id="photoChecklistBody" class="scrollX" style="max-height:240px;overflow:auto"></div>
+    <div class="row" style="margin-top:8px">
+      <input id="photoRequestText" type="text" placeholder="Add a custom request, e.g. marriage photo of John & Mary" style="flex:1;min-width:220px">
+      <button id="photoRequestAdd" class="secondary">Add request</button>
+      <button id="photoRequestExport" class="ghost" disabled>Download checklist</button>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h2>Notes on this device</h2>
+    <div id="noteStoreTable" class="scrollX" style="max-height:240px;overflow:auto"></div>
+    <div class="row" style="margin-top:8px">
+      <button id="changesReportBtn" class="secondary" disabled>Download suggested GEDCOM changes (MD)</button>
+      <button id="changesReportJsonBtn" class="ghost" disabled>Download as JSON</button>
+    </div>
+    <p class="footer">The suggested-changes report is a structured hand-off for your genealogy software: merge suggestions, missing dates, and unverified facts — with attribution and timestamps. It never edits the GED file itself.</p>
+  </div>
+</section>
+
+<!-- ======================================================== BOOKLET TAB -->
+<section id="panel-booklet" class="tabPanel" role="tabpanel" aria-labelledby="tab-booklet">
+  <div class="card">
+    <h2>Family Story Booklet</h2>
+    <p class="note">Generate an attractive printable keepsake from your real GED data: biography, family, chronology, photos, family memories, sources, and open research questions. Everything comes from your file and your family’s notes — nothing is invented. Print it from the browser or save as PDF.</p>
+    <div class="twoCol">
+      <div>
+        <label class="small" for="bookletScope">Scope</label>
+        <select id="bookletScope">
+          <option value="individual">One individual</option>
+          <option value="branch">Family branch (a couple and their descendants)</option>
+          <option value="surname">Whole surname</option>
+        </select>
+        <label class="small" for="bookletPerson">Person (for individual / branch) or surname root</label>
+        <input id="bookletPerson" type="text" list="personList" placeholder="Start typing a name…" autocomplete="off">
+        <datalist id="personList"></datalist>
+        <label class="small" for="bookletSurname">Surname (for surname scope)</label>
+        <input id="bookletSurname" type="text" list="surnameList" placeholder="Start typing a surname…" autocomplete="off">
+        <datalist id="surnameList"></datalist>
+        <label class="small" for="bookletGens">Branch depth (generations of descendants)</label>
+        <input id="bookletGens" type="number" min="1" max="10" value="4">
+        <label class="small" for="bookletTitle">Booklet title</label>
+        <input id="bookletTitle" type="text" placeholder="Example: The Doel Family of Riverton">
+        <label class="small" for="bookletAuthor">Prepared by</label>
+        <input id="bookletAuthor" type="text" placeholder="Example: June Martinez, 2026">
+      </div>
+      <div>
+        <h3>Include</h3>
+        <label class="check"><input id="bkPhotos" type="checkbox" checked> <span>Photos &amp; documents</span></label>
+        <label class="check"><input id="bkMemories" type="checkbox" checked> <span>Family memories (refinement notes, with attribution)</span></label>
+        <label class="check"><input id="bkSources" type="checkbox" checked> <span>Source references</span></label>
+        <label class="check"><input id="bkQuestions" type="checkbox" checked> <span>Research questions &amp; missing evidence</span></label>
+        <label class="check"><input id="bkChronology" type="checkbox" checked> <span>Chronology tables</span></label>
+        <div class="row" style="margin-top:14px">
+          <button id="bookletPreviewBtn" class="primary" disabled>Preview booklet</button>
+          <button id="bookletDownloadBtn" class="secondary" disabled>Download booklet HTML</button>
+        </div>
+        <div id="bookletStats" class="footer"></div>
+      </div>
+    </div>
+    <div id="bookletPrivacyNote" class="note"></div>
+  </div>
+</section>
+
+<!-- ========================================================== ABOUT TAB -->
+<section id="panel-about" class="tabPanel" role="tabpanel" aria-labelledby="tab-about">
+  <div class="grid">
+    <div class="card">
+      <h2>Quick guide</h2>
+      <ol style="line-height:1.7;color:var(--muted)">
+        <li><b>Choose a .ged</b> — or click <b>Load Sample Family</b> to try everything safely.</li>
+        <li><b>Parse GED</b> — check the Diagnostics tab for data issues.</li>
+        <li><b>Media Library</b> — import your photo/document folders; they attach to people and families.</li>
+        <li><b>Build</b> — pick a privacy mode and export profile, then generate the explorer or vaults.</li>
+        <li><b>Share the explorer HTML</b> with family — they add memories in Tree Refinement Mode and export JSON backups.</li>
+        <li><b>Refine tab</b> — import all backups, review conflicts, and export one merged backup.</li>
+        <li><b>Booklet tab</b> — print a keepsake Family Story Booklet.</li>
+      </ol>
+      <h3>Keyboard shortcuts (this builder)</h3>
+      <p class="footer"><span class="kbd">Alt</span>+<span class="kbd">1</span>…<span class="kbd">6</span> switch tabs · <span class="kbd">Alt</span>+<span class="kbd">P</span> parse · <span class="kbd">Alt</span>+<span class="kbd">T</span> toggle theme</p>
+    </div>
+    <div class="card">
+      <h2>Privacy statement</h2>
+      <div class="note good">Grandmothers voice by Kayock runs entirely on your device. It has no server, no account, no telemetry, and no network code. Your GED file, media, and notes never leave your computer unless you personally share the exported files. Refinement notes are saved in your browser’s local storage on this device only — export JSON backups to move them between computers. The original GED file is opened read-only and is never modified or overwritten.</div>
+      <h3>Data safety</h3>
+      <p class="footer">The imported GED is only read. Corrections, memories, and merge suggestions are exported as separate reports for human review. Living-person redaction is estimated from dates (deceased marker, or birth within the threshold) — always double-check before sharing.</p>
+      <h3>License</h3>
+      <p class="footer">Grandmothers voice by Kayock 2.1 — MIT License. Free and open source forever: no paid tiers, no ads, no accounts, no feature limits. See LICENSE for details.</p>
+    </div>
+  </div>
+</section>
+
+<div class="footer" style="text-align:center">
+  Grandmothers voice by Kayock v2.1.0 · offline Family Legacy Studio · <i>“Turn a family tree into something people can actually walk through.”</i>
+</div>
+</div>
+
+<!-- progress / toasts / modals -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="modal" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+  <div class="modalBox">
+    <div class="modalHead"><h2 id="helpModalTitle">Welcome &amp; guided introduction</h2><button class="ghost" id="helpCloseBtn">Close</button></div>
+    <div class="modalBody" id="helpModalBody"></div>
+  </div>
+</div>
+
+<div class="modal" id="bookletModal" role="dialog" aria-modal="true" aria-labelledby="bookletModalTitle">
+  <div class="modalBox" style="max-width:1100px">
+    <div class="modalHead"><h2 id="bookletModalTitle">Booklet preview</h2>
+      <button class="secondary" id="bookletPrintBtn">Print / Save as PDF</button>
+      <button class="ghost" id="bookletCloseBtn">Close</button></div>
+    <div class="modalBody" style="padding:0"><iframe id="bookletFrame" title="Booklet preview" style="width:100%;height:66vh;border:0;background:#fff"></iframe></div>
+  </div>
+</div>
+
+<div class="modal" id="lightbox" role="dialog" aria-modal="true" aria-label="Media viewer">
+  <div class="modalBox" style="max-width:1000px;align-items:center">
+    <div class="modalHead"><h2 id="lightboxTitle" style="font-size:16px">Media</h2><button class="ghost" id="lightboxClose">Close</button></div>
+    <div class="modalBody" id="lightboxBody" style="text-align:center"></div>
+  </div>
+</div>
+
+<div class="tourOverlay" id="tourOverlay" role="dialog" aria-modal="true" aria-labelledby="tourTitle">
+  <div class="tourBox">
+    <h3 id="tourTitle">Welcome to Grandmothers voice by Kayock 2.1</h3>
+    <p id="tourText"></p>
+    <div class="row" style="justify-content:flex-end">
+      <button class="ghost" id="tourSkipBtn">Skip tour</button>
+      <button class="primary" id="tourNextBtn">Next</button>
+    </div>
+  </div>
+</div>
