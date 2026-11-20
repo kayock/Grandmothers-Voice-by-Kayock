@@ -19,11 +19,17 @@ Grandmothers voice by Kayock transforms GEDCOM family history files into self-co
 
 ## Screenshots
 
-The full downloadable project includes three screenshots in the `screenshots/` directory:
+### Southwest Heritage — light theme
 
-- Southwest Heritage light theme
-- Southwest Heritage export and privacy settings
-- Kayock Purple dark theme
+![Southwest Heritage light theme](screenshots/southwest-heritage-light.png)
+
+### Export settings and privacy controls
+
+![Southwest Heritage export settings](screenshots/southwest-heritage-export-settings.png)
+
+### Kayock Purple — dark theme
+
+![Kayock Purple dark theme](screenshots/kayock-purple-dark.png)
 
 ## Quick start
 
