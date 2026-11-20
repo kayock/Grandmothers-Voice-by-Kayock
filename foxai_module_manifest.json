@@ -1,0 +1,51 @@
+{
+  "id": "kayock_legacy_builder",
+  "name": "Grandmothers voice by Kayock",
+  "department": "Kayock Writer / Legacy Studio",
+  "version": "2.1.1",
+  "license": "MIT",
+  "entry": "Grandmothers_Voice_by_Kayock.html",
+  "launcher": "RUN_GED_LEGACY_BUILDER.bat",
+  "description": "Offline Family Legacy Studio: GEDCOM 5.5.1/7.0 importer with encoding detection and diagnostics that generates interactive family-tree explorers (tree diagram, timeline, places, galleries), Family Story Booklets, Obsidian/Logseq vaults with media, and collaborative tree-refinement backups with conflict-reviewed merging. Read-only import; never modifies the GED.",
+  "capabilities": [
+    "gedcom_import_551_70",
+    "encoding_detection_ansel_utf8_cp1252",
+    "diagnostics_report",
+    "source_quality_missing_evidence_report",
+    "media_folder_import_and_matching",
+    "media_gallery_explorer_export",
+    "explorer_html_embedded_media_export",
+    "explorer_html_media_zip_export",
+    "interactive_tree_timeline_places_views",
+    "uncertain_date_preservation",
+    "privacy_living_redaction_exclude",
+    "export_profiles_full_and_family",
+    "tree_refinement_mode_autosave",
+    "refinement_backup_import_conflict_merge",
+    "duplicate_person_suggestions",
+    "photo_document_request_checklist",
+    "suggested_gedcom_changes_report",
+    "family_story_booklet_print_export",
+    "obsidian_markdown_vault_export",
+    "logseq_markdown_vault_export",
+    "single_markdown_export",
+    "parsed_json_export",
+    "binary_safe_zip_writer",
+    "southwest_heritage_light_theme",
+    "dark_kayock_purple_theme"
+  ],
+  "safety": {
+    "read_only_import": true,
+    "no_cloud_upload": true,
+    "does_not_modify_ged": true,
+    "does_not_modify_ancestry": true,
+    "no_telemetry": true,
+    "no_network_code": true,
+    "no_accounts": true,
+    "privacy_living_redaction": true
+  },
+  "tests": "node tests/run_tests.mjs",
+  "legacyIds": [
+    "kayock_legacy_builder"
+  ]
+}

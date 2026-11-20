@@ -1,0 +1,245 @@
+0 HEAD
+1 SOUR KAYOCK-SAMPLE
+2 NAME Grandmothers voice by Kayock synthetic sample family
+2 VERS 1.0
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+1 NOTE This is a fully synthetic sample family invented for demonstrating
+2 CONT the application. Every person, place and date is fictional.
+0 @I1@ INDI
+1 NAME Henry/Williams/
+2 GIVN Henry
+2 SURN Williams
+1 SEX M
+1 BIRT
+2 DATE 12 JUN 1893
+2 PLAC Willow Creek, Marlow County, England
+2 NOTE Born at the farm cottage; the midwife was recorded as Mrs. Hale.
+1 DEAT
+2 DATE 4 FEB 1971
+2 PLAC Riverton
+1 OCCU farm hand, later station master
+1 RESI
+2 DATE 1948
+2 PLAC The farm at Willow Creek
+2 SOUR @S3@
+1 FAMS @F1@
+1 FAMC @F3@
+1 NOTE @N1@
+1 NOTE Grandpa Henry always said the chapel bell rang the day he was born.
+1 OBJE @M1@
+1 OBJE @M3@
+1 OBJE @M2@
+0 @I2@ INDI
+1 NAME Edith/Marsh/
+1 SEX F
+1 BIRT
+2 DATE ABT 1896
+2 PLAC Marlow, England
+1 DEAT
+2 DATE 30 DEC 1980
+1 FAMS @F1@
+1 FAMC @F4@
+0 @I3@ INDI
+1 NAME Thomas/Williams/
+1 SEX M
+1 BIRT
+2 DATE BET 1919 AND 1920
+2 PLAC Willow Creek, England
+1 OCCU railway clerk
+1 FAMS @F2@
+1 FAMC @F1@
+0 @I4@ INDI
+1 NAME Margaret/Williams/
+1 SEX F
+1 BIRT
+2 DATE 22 SEP 1921
+2 PLAC Willow Creek, England
+1 FAMS @F5@
+1 FAMC @F1@
+0 @I5@ INDI
+1 NAME Susan/Williams/
+1 SEX F
+1 BIRT
+2 DATE JUL 1948
+2 PLAC Riverton
+1 FAMS @F6@
+1 FAMC @F2@
+0 @I6@ INDI
+1 NAME David/Kay/
+1 SEX M
+1 BIRT
+2 DATE 1946
+2 PLAC Riverton
+1 FAMS @F6@
+0 @I7@ INDI
+1 NAME Living/Kay/
+1 SEX F
+1 BIRT
+2 DATE 1972
+2 PLAC Riverton
+1 FAMC @F6@
+0 @I8@ INDI
+1 NAME Living/Kay/
+1 SEX M
+1 BIRT
+2 DATE 1974
+2 PLAC Eastlake
+1 FAMC @F6@
+0 @I9@ INDI
+1 NAME Abraham/Williams/
+1 SEX M
+1 BIRT
+2 DATE 1868
+2 PLAC Marlow County, England
+1 DEAT
+2 DATE 1934
+1 FAMS @F3@
+0 @I10@ INDI
+1 NAME Constance/Hale/
+1 SEX F
+1 BIRT
+2 DATE 1870
+2 PLAC Marlow County, England
+1 FAMS @F3@
+0 @I11@ INDI
+1 NAME Elias/Marsh/
+1 SEX M
+1 BIRT
+2 DATE 1872
+1 DEAT
+2 DATE 1942
+1 FAMS @F4@
+0 @I12@ INDI
+1 NAME Ruth/Vance/
+1 SEX F
+1 BIRT
+2 DATE 1875
+1 FAMS @F4@
+0 @I13@ INDI
+1 NAME Frank/Osei/
+1 SEX M
+1 BIRT
+2 DATE 1944
+2 PLAC Eastlake
+1 FAMS @F5@
+0 @I14@ INDI
+1 NAME Peter/Williams/
+1 SEX M
+1 BIRT
+2 DATE 1950
+2 PLAC Riverton
+1 FAMC @F2@
+0 @I15@ INDI
+1 NAME Ada/Williams/
+1 SEX F
+1 BIRT
+2 DATE 1953
+2 PLAC Riverton
+1 FAMC @F2@
+0 @I16@ INDI
+1 NAME June/Kay/
+1 SEX F
+1 BIRT
+2 DATE 1998
+2 PLAC Eastlake
+1 FAMC @F7@
+0 @I17@ INDI
+1 NAME Sam/Osei/
+1 SEX M
+1 BIRT
+2 DATE 1970
+2 PLAC Eastlake
+1 FAMS @F7@
+0 @I18@ INDI
+1 NAME Peter/Williams/
+1 BIRT
+2 DATE 1950
+2 PLAC Riverton
+1 FAMC @F2@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 CHIL @I4@
+1 MARR
+2 DATE 8 SEP 1918
+2 PLAC Willow Creek parish church
+2 SOUR @S1@
+3 PAGE register 1918, entry 44
+3 QUAY 3
+1 NOTE Married at the parish church; the whole village came to the reception at the farm.
+1 OBJE @M4@
+0 @F2@ FAM
+1 HUSB @I3@
+1 CHIL @I5@
+1 CHIL @I14@
+1 CHIL @I15@
+1 CHIL @I18@
+1 MARR
+2 DATE 1947
+1 DIV
+2 DATE 1956
+0 @F3@ FAM
+1 HUSB @I9@
+1 WIFE @I10@
+1 CHIL @I1@
+0 @F4@ FAM
+1 HUSB @I11@
+1 WIFE @I12@
+1 CHIL @I2@
+0 @F5@ FAM
+1 HUSB @I13@
+1 WIFE @I4@
+1 MARR
+2 DATE 1942
+0 @F6@ FAM
+1 HUSB @I6@
+1 WIFE @I5@
+1 CHIL @I7@
+1 CHIL @I8@
+1 MARR
+2 DATE 1969
+2 PLAC Riverton
+0 @F7@ FAM
+1 HUSB @I17@
+1 CHIL @I16@
+1 MARR
+2 DATE 1996
+0 @N1@ NOTE
+1 CONT Henry Williams served at the Willow Creek station for 31 years.
+1 CONT He kept a small notebook of every train that ran late — it survives in the family.
+0 @S1@ SOUR
+1 TITL Willow Creek parish marriage register
+1 ABBR WC Marriages
+1 AUTH Parish clerk
+1 PUBL County records office
+1 TEXT Register volume 9. The 1918 marriages were entered by curate T. Bellamy.
+1 NOTE Register preserved on microfilm.
+0 @S2@ SOUR
+1 TITL Riverton railway employment ledger
+1 ABBBR missing on purpose for the sample diagnostics
+0 @S3@ SOUR
+1 TITL Farm auction notice 1948
+1 AUTH Marlow County Gazette
+1 NOTE Newspaper clipping kept in the family bible.
+0 @M1@ OBJE
+1 FILE Photos/grandpa_williams_portrait.svg
+2 FORM svg
+3 TITL Henry Williams portrait
+1 TITL Henry Williams portrait (synthetic sample)
+0 @M2@ OBJE
+1 FILE Photos/family_farm_1948.svg
+2 FORM svg
+1 TITL The family farm, 1948 (synthetic sample)
+0 @M3@ OBJE
+1 FILE Documents/marriage_register.svg
+2 FORM svg
+1 TITL Marriage register entry (synthetic sample)
+0 @M4@ OBJE
+1 FILE Photos/church_baptism.svg
+2 FORM svg
+1 TITL Riverside chapel (synthetic sample)
+0 TRLR
