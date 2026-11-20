@@ -1,0 +1,66 @@
+0 HEAD
+1 SOUR TEST
+1 GEDC
+2 VERS 5.5.1
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Zephyron/Quillprivate/
+1 SEX M
+1 BIRT
+2 DATE 14 JUL 1985
+2 PLAC Private Hollow, Secret County
+2 SOUR @S9@
+3 PAGE private register, entry 1
+1 FAMS @F1@
+1 NOTE @N9@
+1 OBJE @M9@
+1 OBJE @M8@
+0 @I2@ INDI
+1 NAME Publica/Openshared/
+1 SEX F
+1 BIRT
+2 DATE 2 FEB 1902
+2 PLAC Publictown, Open County
+2 SOUR @S1@
+1 FAMS @F1@
+1 OBJE @M1@
+0 @I3@ INDI
+1 NAME Elderly/Publicperson/
+1 SEX M
+1 BIRT
+2 DATE 3 MAR 1899
+2 PLAC Publictown
+1 DEAT
+2 DATE 4 APR 1979
+1 OBJE @M2@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 MARR
+2 DATE 2010
+2 PLAC Secret Chapel, Private Hollow
+1 NOTE Marriage note mentioning Zephyron Quillprivate privately.
+0 @N9@ NOTE
+1 CONT A very private shared note about Zephyron Quillprivate only.
+0 @S9@ SOUR
+1 TITL QUILPRIVATE-PRIVATE-SOURCE-REGISTER
+1 TEXT Private transcript mentioning Zephyron Quillprivate.
+0 @S1@ SOUR
+1 TITL Public family bible of the Openshared family
+0 @M9@ OBJE
+1 FILE Photos/TEAPEE-MARKER-secret-photo.svg
+2 FORM svg
+1 TITL PRIVATE-MEDIA-TITLE-MARKER
+0 @M8@ OBJE
+1 FILE Audio/QUILLPRIVATE-voice-memo.mp3
+2 FORM mp3
+1 TITL PRIVATE-AUDIO-TITLE-MARKER
+0 @M1@ OBJE
+1 FILE Photos/public-shareable-photo.svg
+2 FORM svg
+1 TITL Public photo marker
+0 @M2@ OBJE
+1 FILE Documents/public-deed-1910.svg
+2 FORM svg
+1 TITL Public deed marker
+0 TRLR

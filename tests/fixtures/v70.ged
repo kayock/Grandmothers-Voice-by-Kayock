@@ -1,0 +1,48 @@
+0 HEAD
+1 SOUR TEST
+2 VERS 7.0.9
+1 GEDC
+2 VERS 7.0.9
+1 CHAR UTF-8
+1 NOTE Synthetic GEDCOM 7 fixture for parser tests.
+0 @I1@ INDI
+1 NAME Johann /Winkler/
+2 GIVN Johann
+2 SURN Winkler
+1 SEX M
+1 BIRT
+2 DATE 1899-05-04
+2 PLAC Graz, Steiermark, Österreich
+2 NOTE Born at home on the hill road.
+2 SOUR @S1@
+3 PAGE register 1900, line 12
+1 OCCU watchmaker
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Clara /Bauer/
+1 SEX F
+1 BIRT
+2 DATE 1903-11-27
+1 FAMS @F1@
+0 @F1@ FAM
+1 MARR
+2 DATE 1924-06-15
+2 PLAC Graz
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+0 @I3@ INDI
+1 NAME Anna /Winkler/
+1 SEX F
+1 BIRT
+2 DATE 1926-02-02
+1 FAMC @F1@
+0 @S1@ SOUR
+1 TITL Graz parish register
+1 CREAT
+2 DATE 2024-01-01
+0 @M1@ OBJE
+1 FILE sample-photo.svg
+2 TRAN text/plain A digitised caption
+1 TITL Sample photo
+0 TRLR
