@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kayock Legacy Builder User Guide</title>
+<style>
+:root{--bg:#100b1d;--panel:#181127;--ink:#f3edff;--muted:#c9badf;--line:#392a55;--purple:#9d6cff;--magenta:#e879f9;--cyan:#55d6ff}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",Roboto,Arial,sans-serif;line-height:1.62;color:var(--ink);background:radial-gradient(circle at top left,#2b1946 0,transparent 40%),var(--bg)}
+header{padding:44px 24px 30px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,rgba(157,108,255,.20),rgba(232,121,249,.07))}
+.inner{max-width:880px;margin:0 auto}
+.kicker{color:var(--cyan);text-transform:uppercase;letter-spacing:.16em;font-weight:700;font-size:12px}
+h1{font-size:clamp(28px,5vw,44px);margin:8px 0}
+main{max-width:880px;margin:0 auto;padding:26px 24px 60px}
+h2{color:#fff;border-bottom:1px solid var(--line);padding-bottom:8px;margin-top:34px;font-size:22px}
+blockquote{border-left:4px solid var(--purple);margin:14px 0;padding:10px 16px;background:rgba(157,108,255,.10);border-radius:10px;color:var(--muted);font-style:italic}
+code{background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:.92em;font-family:Consolas,Menlo,monospace}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+th{background:rgba(157,108,255,.14)}
+p.li{margin:6px 0;padding-left:8px}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+hr{border:0;border-top:1px solid var(--line);margin:22px 0}
+@media print{body{background:#fff;color:#222}header{background:#f0eaff;border-color:#ccc}h1,h2{color:#222}code{background:#f3f0fa;border-color:#ccc}th{background:#f0eaff;color:#222}blockquote,td,th{color:#222}a{color:#333}}
+</style></head><body>
+<header><div class="inner"><div class="kicker">Kayock Legacy Builder 2.0 · offline Family Legacy Studio</div>
+<h1>User Guide</h1></div></header>
+<main>
+<h1>Grandmothers voice by Kayock — User Guide (v2.0)</h1>
+<p><em>Turn a family tree into something people can actually walk through.</em></p>
+<p>Grandmothers voice by Kayock is an offline Family Legacy Studio. It reads a GEDCOM</p>
+<p><code>.ged</code> file exported from Ancestry or another genealogy program and creates</p>
+<p>things your whole family can use — an interactive explorer, photo galleries,</p>
+<p>printable keepsakes and research vaults — without ever modifying your</p>
+<p>original file, without an internet connection, and without accounts,</p>
+<p>subscriptions or ads.</p>
+<hr>
+<h2>Contents</h2>
+<p class="li">1. <a href="#1-getting-started">Getting started</a></p>
+<p class="li">2. <a href="#2-choosing-and-parsing-a-ged-file">Choosing and parsing a GED file</a></p>
+<p class="li">3. <a href="#3-diagnostics-checking-your-data">Diagnostics: checking your data</a></p>
+<p class="li">4. <a href="#4-the-media-library">The Media Library</a></p>
+<p class="li">5. <a href="#5-privacy-and-export-profiles">Privacy and export profiles</a></p>
+<p class="li">6. <a href="#6-generating-the-family-story-explorer">Generating the Family Story Explorer</a></p>
+<p class="li">7. <a href="#7-using-the-family-story-explorer">Using the Family Story Explorer</a></p>
+<p class="li">8. <a href="#8-tree-refinement-mode-collecting-family-memories">Tree Refinement Mode: collecting family memories</a></p>
+<p class="li">9. <a href="#9-merging-everyones-notes-refine-tab">Merging everyone's notes (Refine tab)</a></p>
+<p class="li">10. <a href="#10-duplicate-person-suggestions">Duplicate person suggestions</a></p>
+<p class="li">11. <a href="#11-the-family-story-booklet">The Family Story Booklet</a></p>
+<p class="li">12. <a href="#12-obsidian-and-logseq-vaults">Obsidian and Logseq vaults</a></p>
+<p class="li">13. <a href="#13-troubleshooting">Troubleshooting</a></p>
+<p class="li">14. <a href="#14-frequently-asked-questions">Frequently asked questions</a></p>
+<hr>
+<h2>1. Getting started</h2>
+<p><strong>The fastest way to learn</strong> is to click <strong>Load Sample Family</strong> in the</p>
+<p>header. It loads a completely synthetic family (the Williams family of</p>
+<p>Willow Creek — every person, date and photo is invented for the demo, four</p>
+<p>sample images included) so you can try every feature safely.</p>
+<p>Launching the app:</p>
+<table><thead><tr><th>Platform</th><th>How</th></tr></thead><tbody>
+<tr><td>Windows</td><td>Double-click <code>RUN_GED_LEGACY_BUILDER.bat</code> (or the HTML file itself)</td></tr>
+<tr><td>macOS</td><td>Double-click <code>RUN_GED_LEGACY_BUILDER.command</code> (or the HTML file)</td></tr>
+<tr><td>Linux</td><td>Run <code>RUN_GED_LEGACY_BUILDER.sh</code>, or open <code>Grandmothers_Voice_by_Kayock.html</code> in your browser</td></tr>
+</tbody></table>
+<p>No installation, no server, no internet. If you extracted the ZIP, keep the</p>
+<p>files together in one folder.</p>
+<p>The first time the app opens, a short <strong>guided introduction</strong> appears — five</p>
+<p>screens explaining each tab. You can replay it any time from <strong>Help</strong>.</p>
+<p>Keyboard users: <code>Alt+1</code>–<code>6</code> switches tabs, <code>Alt+P</code> parses, <code>Alt+T</code> toggles</p>
+<p>the theme.</p>
+<p>### Choosing your theme</p>
+<p>Click <strong>Theme</strong> in the header to switch between:</p>
+<p class="li">• <strong>Dark · Kayock Purple</strong> — the original deep-purple night look.</p>
+<p class="li">• <strong>Light · Southwest Heritage</strong> — a warm heritage palette inspired by the</p>
+<p>  American Southwest: Desert Sand and Warm Ivory surfaces, Deep Mesa Brown</p>
+<p>  text, Southwestern Turquoise buttons and links, Adobe Clay and Terracotta</p>
+<p>  accents, and Sunlit Ochre highlights. Each app (builder and explorer)</p>
+<p>  remembers your choice separately, and the printed booklet uses a</p>
+<p>  light, ink-friendly design drawn from the same palette.</p>
+<h2>2. Choosing and parsing a GED file</h2>
+<p class="li">1. Drag a <code>.ged</code> file onto the drop zone (or click it and choose the file).</p>
+<p class="li">2. The app reports the detected <strong>character encoding</strong> (UTF-8, ANSEL,</p>
+<p>   Windows-1252…) — GEDCOM files from different programs use different</p>
+<p>   encodings, and the detection is shown so you know nothing was guessed</p>
+<p>   silently.</p>
+<p class="li">3. Click <strong>Parse GED</strong>. A progress bar shows large files advancing, and a</p>
+<p>   cancel button appears while parsing.</p>
+<p class="li">4. The status panel shows people, families, notes, sources, media</p>
+<p>   references, life events, the parse time, and a <strong>tree identity</strong> — a</p>
+<p>   short fingerprint of your exact file used to keep family notes attached</p>
+<p>   to the right tree.</p>
+<p>If Ancestry gave you a <code>.zip</code>, unzip it first and choose the <code>.ged</code> inside.</p>
+<p><strong>Set the explorer title</strong> (e.g. "The Williams Family") and an optional</p>
+<p><strong>start person</strong> — the person the explorer opens first. <strong>Your name</strong> is</p>
+<p>saved with any notes you coordinate, only inside your own exports.</p>
+<h2>3. Diagnostics: checking your data</h2>
+<p>The <strong>Diagnostics tab</strong> is your data health check. It never changes your</p>
+<p>file — it reports what a careful genealogist would want to double-check:</p>
+<p class="li">• <strong>Errors</strong>: malformed lines, duplicate <code>@xref@</code> ids, records missing ids.</p>
+<p class="li">• <strong>Warnings</strong>: references to people/families/notes that don't exist,</p>
+<p>  someone listed as both child and spouse in the same family, the same</p>
+<p>  person as both husband and wife, a parent born less than 13 years before</p>
+<p>  a child, birth recorded after death, unreadable dates.</p>
+<p class="li">• <strong>Info</strong>: unsupported tags that are preserved but not specially</p>
+<p>  interpreted, people with no family links, legacy <code>BLOB</code> media, and more.</p>
+<p>Use the filter buttons to focus on one severity, and **Download Diagnostics</p>
+<p>Report** to save the full list as Markdown or JSON for your genealogy</p>
+<p>program's review.</p>
+<p>The <strong>Source quality</strong> section shows what percentage of people and events</p>
+<p>carry citations, the mix of evidence quality recorded in the file (direct,</p>
+<p>secondary, circumstantial, weak), and a table of people whose events have</p>
+<p>no citations — with a suggestion for what to look for. It never invents</p>
+<p>facts; it only points at missing evidence.</p>
+<h2>4. The Media Library</h2>
+<p>GEDCOM files usually contain <em>references</em> to photos and documents, not the</p>
+<p>files themselves. The Media Library reconnects them:</p>
+<p class="li">1. Click <strong>Import media folder…</strong> and choose the folder (or folders) where</p>
+<p>   your photos and scans live — the app reads names only, and everything</p>
+<p>   stays on your computer.</p>
+<p class="li">2. References are matched by exact path first, then by filename, then by</p>
+<p>   filename without extension. Matched items appear in the gallery preview.</p>
+<p class="li">3. Anything unmatched stays listed as <strong>unmatched</strong> with its original GED</p>
+<p>   path — nothing is dropped. Use <strong>Link file to a media reference…</strong> to</p>
+<p>   connect a file manually.</p>
+<p class="li">4. Web URL references are kept as inert links; the app never fetches</p>
+<p>   anything from the network.</p>
+<p>Photos, PDFs, audio and video are supported wherever your browser supports</p>
+<p>them. Duplicate filenames, deep paths, and unusual formats are handled</p>
+<p>gracefully — the library reports what matched, what didn't, and what is an</p>
+<p>external link.</p>
+<h2>5. Privacy and export profiles</h2>
+<p>Everything is generated on your computer, but exports can travel — so the</p>
+<p><strong>Build tab</strong> has privacy options applied to <em>every</em> generated file:</p>
+<p class="li">• <strong>Keep everyone</strong> — private local use.</p>
+<p class="li">• <strong>Redact living people</strong> — names stay, but dates, places, notes, sources</p>
+<p>  and media of anyone estimated to be living are hidden.</p>
+<p class="li">• <strong>Redact names too</strong> — living people become initials ("J.D.").</p>
+<p class="li">• <strong>Exclude living people</strong> — replaced with "Private (living person)"</p>
+<p>  placeholders so the family structure stays readable.</p>
+<p>"Possibly living" means: no death recorded <strong>and</strong> birth (or earliest</p>
+<p>event) within the threshold years of today (default 100). It is an</p>
+<p>estimate — always review before sharing. A strict option treats people with</p>
+<p>no dates at all as living.</p>
+<p><strong>Export profiles</strong>:</p>
+<p class="li">• <strong>Full archive</strong> — everything, largest files.</p>
+<p class="li">• <strong>Family sharing edition</strong> — smaller files: source transcripts trimmed,</p>
+<p>  photographs downscaled (done locally, offline), audio and video not</p>
+<p>  embedded in the single-file explorer (use the HTML + media ZIP for those).</p>
+<h2>6. Generating the Family Story Explorer</h2>
+<p>Click <strong>Generate Interactive HTML</strong> to download a single self-contained</p>
+<p>file. Every person page includes their events (with dates, places,</p>
+<p>addresses, notes and citations), shared family records, photo galleries</p>
+<p>embedded, and Tree Refinement Mode.</p>
+<p>For larger media collections, <strong>HTML + Media ZIP</strong> packages the explorer</p>
+<p>with a <code>media/</code> folder instead of embedding — extract the ZIP and open the</p>
+<p>HTML inside.</p>
+<p>Also available: <strong>Download Parsed JSON</strong> (for tools), **Export Obsidian</p>
+<p>Vault ZIP<strong>, </strong>Export Logseq Vault ZIP<strong>, </strong>Download One Markdown File**,</p>
+<p>and report downloads (diagnostics, source quality).</p>
+<h2>7. Using the Family Story Explorer</h2>
+<p>Open the generated HTML file in any browser (double-click works). The</p>
+<p>purple interface matches the builder, with a <strong>light theme</strong> toggle in the</p>
+<p>header.</p>
+<p class="li">• <strong>Person tab</strong> — the heart: biography facts, parents, spouse/partner,</p>
+<p>  children and siblings as clickable branches, the full life-event list</p>
+<p>  with notes, citations and media, and Tree Refinement Mode (below).</p>
+<p class="li">• <strong>Family Tree tab</strong> — an interactive diagram centred on the selected</p>
+<p>  person: ancestors above, descendants below. Drag to pan, scroll or the</p>
+<p>  buttons to zoom, click anyone to make them the centre, and use *More</p>
+<p>  ancestors/descendants* to grow the view generation by generation. Living</p>
+<p>  people have dashed outlines.</p>
+<p class="li">• <strong>Timeline tab</strong> — every recorded event in order, grouped by decade and</p>
+<p>  year. Uncertain dates (ABT, BEF, "between 1920 and 1925") keep their</p>
+<p>  qualifiers — the app never pretends a vague date is precise. Filter to</p>
+<p>  the selected person or search by name, event, place or date.</p>
+<p class="li">• <strong>Places tab</strong> — every recorded place with event and people counts.</p>
+<p>  Toggle <strong>Migration view</strong> to see the selected person's places in</p>
+<p>  chronological order — a life route built only from what the GED says</p>
+<p>  (the app does not invent map coordinates).</p>
+<p class="li">• <strong>Gallery tab</strong> — all photos and documents grouped by person. Click any</p>
+<p>  item for a closer look and a <strong>Download original</strong> button.</p>
+<p class="li">• <strong>About tab</strong> — which GED, which version, the tree identity, the privacy</p>
+<p>  mode that was applied, diagnostics summary, and privacy notes.</p>
+<p>Keyboard: <code>/</code> focuses search · <code>1</code>–<code>6</code> switch tabs · arrow keys move</p>
+<p>through results · <code>Enter</code> opens · <code>Esc</code> closes dialogs · <code>T</code> toggles theme.</p>
+<h2>8. Tree Refinement Mode: collecting family memories</h2>
+<p>On every person page (when included at generation time) family members can</p>
+<p>add:</p>
+<p class="li">• Flags: <strong>Correction needed</strong>, <strong>Possible duplicate</strong>, **Needs</p>
+<p>  source/proof<strong>, </strong>Photo/document to find**.</p>
+<p class="li">• A <strong>memory or family story</strong> — the irreplaceable stuff.</p>
+<p class="li">• <strong>Corrections, questions and research notes</strong>.</p>
+<p>Notes <strong>autosave quietly</strong> in that browser on that device (a small status</p>
+<p>line shows the last save time — there are no popups). Notes carry the</p>
+<p>contributor's name, timestamps, and history.</p>
+<p>Family members click <strong>Export JSON backup</strong> and send the file back to the</p>
+<p>person coordinating the project. They can also export a readable</p>
+<p><strong>corrections report</strong> (Markdown) and run <strong>duplicate suggestions</strong> for the</p>
+<p>person they're viewing.</p>
+<p><strong>Importing a backup</strong> in the explorer shows a review screen: identical</p>
+<p>notes are skipped, conflicting notes are shown side by side (keep current /</p>
+<p>use imported / keep both with attribution), and backups from a <em>different</em></p>
+<p>tree carry a loud mismatch warning that must be confirmed before anything</p>
+<p>is attached — so notes never land on an unrelated family.</p>
+<h2>9. Merging everyone's notes (Refine tab)</h2>
+<p>The coordinator collects backups from relatives and opens the <strong>Refine</strong></p>
+<p>tab in the builder:</p>
+<p class="li">1. <strong>Import refinement backup(s)…</strong> — choose any number of JSON files.</p>
+<p class="li">2. The merge review shows what's new, what's identical, and every conflict</p>
+<p>   side by side with attribution. Choose per note; then **Apply reviewed</p>
+<p>   merges**.</p>
+<p class="li">3. Backups exported from a <em>different</em> GED are held back behind an explicit</p>
+<p>   "I verified it belongs to this family" confirmation.</p>
+<p class="li">4. <strong>Export merged refinement backup</strong> produces one combined JSON to load</p>
+<p>   into any explorer copy — so a single shared explorer can contain the</p>
+<p>   whole family's contributions.</p>
+<p class="li">5. The <strong>Notes on this device</strong> table shows everything stored locally,</p>
+<p>   with delete buttons.</p>
+<h2>10. Duplicate person suggestions</h2>
+<p>The Refine tab scans the parsed tree for records that may describe the same</p>
+<p>person: same name plus shared parents, spouse, birth year or birth place</p>
+<p>(and penalises mismatched sex). Each suggestion lists its <strong>evidence</strong> and a</p>
+<p><strong>confidence</strong> level (high / medium / low).</p>
+<p>Nothing is ever merged automatically. <strong>Flag pair in notes</strong> records the</p>
+<p>suggestion into both people's refinement notes, and the **suggested GEDCOM</p>
+<p>changes** report (Markdown + JSON) collects duplicates, flagged notes with</p>
+<p>attribution, and data conflicts — a ready-made review list for your</p>
+<p>genealogy software.</p>
+<p>The <strong>photo/document request checklist</strong> gathers everyone flagged</p>
+<p>"Photo/document to find" plus custom requests you add, ready to download</p>
+<p>and hand out at a family gathering.</p>
+<h2>11. The Family Story Booklet</h2>
+<p>The <strong>Booklet tab</strong> creates a printable keepsake:</p>
+<p class="li">• <strong>Scope</strong>: one individual, a family branch (a couple plus a chosen number</p>
+<p>  of descendant generations), or a whole surname.</p>
+<p class="li">• <strong>Includes</strong>: photographs &amp; documents, family memories (with the</p>
+<p>  contributor's name), source references with evidence quality, chronology</p>
+<p>  tables, and research questions / missing-evidence items.</p>
+<p class="li">• <strong>Preview</strong> opens in a print-ready window; <strong>Print / Save as PDF</strong> uses</p>
+<p>  your browser's print dialog (choose <em>Save as PDF</em> as the printer), or</p>
+<p>  <strong>Download booklet HTML</strong> to keep the keepsake file itself.</p>
+<p>Everything in the booklet comes from the GED and the family's own notes —</p>
+<p>uncertain dates are marked uncertain, missing items are marked missing, and</p>
+<p>nothing is invented. If a privacy mode is active the booklet applies it and</p>
+<p>says so on the page.</p>
+<h2>12. Obsidian and Logseq vaults</h2>
+<p>The vault exports give long-term researchers a Markdown home for the tree:</p>
+<p class="li">• <strong>Obsidian</strong>: <code>People/</code> pages with YAML frontmatter, <code>[[wiki links]]</code> to</p>
+<p>  relatives, <code>Indexes/</code> (People A–Z, Surnames, Places, Timeline, Sources,</p>
+<p>  Research Questions), and a <code>media/</code> folder — photos embed with</p>
+<p>  <code>![[media/photo.jpg]]</code>.</p>
+<p class="li">• <strong>Logseq</strong>: outliner-friendly pages in <code>pages/</code>, <code>[[page references]]</code>,</p>
+<p>  and media in <code>assets/</code> with the same style of embeds.</p>
+<p>Unzip the vault into your vault folder and open it in the app. The included</p>
+<p>README.md inside the vault explains the layout.</p>
+<h2>13. Troubleshooting</h2>
+<p><strong>The tool doesn't see my file</strong> — make sure it ends in <code>.ged</code>. Unzip</p>
+<p>Ancestry's ZIP first.</p>
+<p><strong>Names look wrong for accented characters</strong> — check the encoding note</p>
+<p>under the drop zone. ANSEL and Windows-1252 are detected automatically;</p>
+<p>very old IBM-PC files are decoded with the closest available table.</p>
+<p><strong>Parse is slow</strong> — very large trees take a moment; the progress bar shows</p>
+<p>progress and Cancel works. 10,000 people parse in under a second on a</p>
+<p>typical computer.</p>
+<p><strong>Some photos show "file not provided"</strong> — the GED references a file that</p>
+<p>wasn't in your imported folders. Import the right folder, or link the file</p>
+<p>manually in the Media Library.</p>
+<p><strong>The explorer file is huge</strong> — it embeds media. Use the HTML + Media ZIP</p>
+<p>export for large collections.</p>
+<p><strong>My notes disappeared</strong> — notes live in the browser that made them, on</p>
+<p>that device. Export JSON backups regularly; merge them in the Refine tab.</p>
+<p><strong>The original GED was never touched</strong> — truly. The app only reads it; the</p>
+<p>automated tests verify byte-for-byte unchanged files.</p>
+<h2>14. Frequently asked questions</h2>
+<p><strong>Is my data uploaded anywhere?</strong> No. The application contains no network</p>
+<p>code at all. See PRIVACY.md.</p>
+<p><strong>Does it edit my Ancestry tree?</strong> No. It exports <em>suggestions</em> for humans</p>
+<p>to review.</p>
+<p><strong>Can two people work together?</strong> Yes — that's the refinement backup flow</p>
+<p>(explorer → JSON backups → Refine tab merge → merged backup).</p>
+<p><strong>What GEDCOM versions work?</strong> 5.5.1 and 7.0 are detected and handled;</p>
+<p>other versions are parsed with 5.5.1 rules and reported.</p>
+<p><strong>Is it really free?</strong> MIT-licensed, forever. No paid tiers, no ads, no</p>
+<p>accounts, no feature restrictions.</p>
+<p style="margin-top:34px;color:var(--muted);font-size:13px">Kayock Legacy Builder 2.0 — MIT License. Runs fully offline. Your original GED file is never modified.</p>
+</main></body></html>
